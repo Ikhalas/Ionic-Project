@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as firebase from 'Firebase';
+import { snapshotToArray } from '../config/firebaseconfig'
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit{
-  uname = true
-  pass = true
-  fname = true
-  lname = true
-  cpass = true
+export class RegisterPage {
+  emptyfname
+  emptylname
+  emptyuname
+  emptypass
+  emptycpass
+
+  uname
+  pass
+  cpass
+
+  repeatedUser
 
   firstname
   lastname
@@ -18,53 +27,60 @@ export class RegisterPage implements OnInit{
   password
   cpassword
 
-  constructor() { }
+  infos = [];
+  ref = firebase.database().ref('user/');
 
-  ngOnInit(){
-
+  constructor(private router: Router) {
+    this.ref.on('value', resp => {
+      this.infos = [];
+      this.infos = snapshotToArray(resp);
+    });
   }
 
-  register(){
 
-    let check1  = this.allLetter(this.firstname)
-    let check2  = this.allLetter(this.lastname)
-    check1 == false ? this.fname = false : this.fname = true
-    check2 == false ? this.lname = false : this.lname = true
+  validate() {
+    // undefine check
+    this.firstname == undefined || this.firstname == null || this.firstname == "" ? this.emptyfname = false : this.emptyfname = true
+    this.lastname == undefined || this.lastname == null || this.lastname == "" ? this.emptylname = false : this.emptylname = true
+    this.username == undefined || this.username == null || this.username == "" ? this.emptyuname = false : this.emptyuname = true
+    this.password == undefined || this.password == null || this.password == "" ? this.emptypass = false : this.emptypass = true
+    this.cpassword == undefined || this.cpassword == null || this.cpassword == "" ? this.emptycpass = false : this.emptycpass = true
 
+    // invalid check
     this.username.length <= 5 ? this.uname = false : this.uname = true;
     this.password.length <= 5 ? this.pass = false : this.pass = true;
-      
-    this.password == this.cpassword ? this.cpass = false : this.cpass = true
-  
+    this.password !== this.cpassword ? this.cpass = false : this.cpass = true
 
+    // repeatedUser check
+    for (let data of this.infos) {
+      if(data.username === this.username){
+        this.repeatedUser = false
+      }
+      else{
+        this.repeatedUser = true
+      }
+    }
 
-    console.log(this.firstname.length)
-    console.log(this.lastname)
-    console.log(this.username)
-    console.log(typeof(this.password))
-    console.log(this.cpassword)
+    if (this.emptyfname && this.emptylname && this.emptyuname && this.emptypass && this.emptycpass
+      && this.uname && this.pass && this.cpass && this.repeatedUser === true) {
+      console.log("you can register")
+      this.register()
+    }
+    else {
+      console.log("you can't register")
+    }
 
   }
-
-  allLetter(txt){
-   var letters = /^[A-Za-z]+$/;
-   if(txt.match(letters)) return true
-   else return false   
+  register() {
+    
+    let newInfo = this.ref.push();
+    newInfo.set({
+      username: this.username,
+      password: this.password,
+      fname: this.firstname,
+      lname: this.lastname
+    })
+    alert("Register Complete")
+    this.router.navigate(['/login']);
   }
-
-  allLetterAndnumber()
-  {
-   var letters = /^[0-9a-zA-Z]+$/;
-   if(this.username.match(letters))
-     {
-      alert("valid");
-     }
-   else
-     {
-     alert("Please input alphabet characters only");
-     }
-  }
-
-  
-
 }

@@ -23,14 +23,14 @@
       <ion-input type="text" [(ngModel)]="firstname"></ion-input>
     </ion-item>
     <div class="msg-error">
-      {{fname === false ? " ! Your first name must contain only letters" : ""}}
+      {{emptyfname === false ? " ! First name is required." : ""}}
     </div>
     <ion-item>
       <ion-label position="floating">Last Name</ion-label>
       <ion-input type="text" [(ngModel)]="lastname"></ion-input>
     </ion-item>
     <div class="msg-error">
-      {{lname === false ? " ! Your last name must contain only letters" : ""}}
+      {{emptylname === false ? " ! Last name is required." : ""}}
     </div>
 
     <br>
@@ -40,7 +40,9 @@
       <ion-input type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
     <div class="msg-error">
-      {{uname === false ? " ! username must be at least 5 characters long" : ""}}
+      {{uname === false ? " ! Username must be at least 5 characters long." : ""}}
+      {{emptyuname === false ? " ! Username is required." : ""}}
+      {{repeatedUser === false ? " ! This username is already used." : ""}}
     </div>
 
     <ion-item>
@@ -48,7 +50,8 @@
       <ion-input type="password" [(ngModel)]="password"></ion-input>
     </ion-item>
     <div class="msg-error">
-      {{pass === false ? " ! password must be at least 5 characters long" : ""}}
+      {{pass === false ? " ! Password must be at least 5 characters long." : ""}}
+      {{emptypass === false ? " ! Password is required." : ""}}
     </div>
 
     <ion-item>
@@ -56,12 +59,13 @@
       <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
     </ion-item>
     <div class="msg-error">
-        {{cpass === false ? " ! password must be at least 5 characters long" : ""}}
-      </div>
+      {{cpass === false ? " ! Password mismatch." : ""}}
+      {{emptycpass === false ? " ! Confirm Password is required." : ""}}
+    </div>
 
     <br>
 
-    <ion-button expand="block" (click)="register()">SIGN-UP</ion-button>
+    <ion-button expand="block" (click)="validate()">SIGN-UP</ion-button>
 
   </div>
 
