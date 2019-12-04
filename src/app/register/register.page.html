@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-round-back" text="Back" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-right">
+      <img class="logo3" src="/assets/img/logo3.png">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <br>
+
+  <div class="signup-header">
+    <h1>SIGN-UP</h1>
+  </div>
+
+  <div class="signup-input">
+    <ion-item>
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input type="text" [(ngModel)]="firstname"></ion-input>
+    </ion-item>
+    <div class="msg-error">
+      {{fname === false ? " ! Your first name must contain only letters" : ""}}
+    </div>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text" [(ngModel)]="lastname"></ion-input>
+    </ion-item>
+    <div class="msg-error">
+      {{lname === false ? " ! Your last name must contain only letters" : ""}}
+    </div>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <div class="msg-error">
+      {{uname === false ? " ! username must be at least 5 characters long" : ""}}
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <div class="msg-error">
+      {{pass === false ? " ! password must be at least 5 characters long" : ""}}
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
+    </ion-item>
+    <div class="msg-error">
+        {{cpass === false ? " ! password must be at least 5 characters long" : ""}}
+      </div>
+
+    <br>
+
+    <ion-button expand="block" (click)="register()">SIGN-UP</ion-button>
+
+  </div>
+
+</ion-content>
