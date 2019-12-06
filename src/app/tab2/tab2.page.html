@@ -4,16 +4,18 @@
 <br>
 
 <ion-content>
-  <ion-item class="title">
-    <p>Write a review</p>
+  <ion-item>
+    <div class="header">
+      Write a review
+    </div>
   </ion-item>
   <br>
   <div *ngIf="!image_base64">
-    <ion-button [fill]="'clear'" (click)="openGallery()"><img src="/assets/img/upload-icon.png" /></ion-button>
+    <ion-button class="upload_img" [fill]="'clear'" (click)="openGallery()"><img class="upload" src="/assets/img/upload-icon.png" /></ion-button>
   </div>
   <div *ngIf="image_base64">
-      <img [src]="preImage" />
-    </div>
+    <img [src]="preImage" />
+  </div>
   <ion-item>
     <ion-input type="text" [(ngModel)]="title" placeholder="Title"></ion-input>
   </ion-item>

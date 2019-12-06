@@ -1,6 +1,11 @@
+@import 'https://fonts.googleapis.com/css?family=Gelasio&display=swap';
+
+*{
+  font-family: 'Gelasio', serif;
+}
+
 ion-item{
-  --border-color: var(--ion-color-danger, #f1453d);
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .title{

@@ -1,5 +1,24 @@
+@import 'https://fonts.googleapis.com/css?family=Gelasio&display=swap';
+
+*{
+  font-family: 'Gelasio', serif;
+}
+
+.title{
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.button-go{
+    height: auto;
+}
+
 ion-content{
     text-align: center;
+}
+
+button-go{
+    height: auto;
 }
 
 .logo2{
@@ -9,7 +28,7 @@ ion-content{
 }
 p{
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 span{

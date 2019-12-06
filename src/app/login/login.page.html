@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button icon="arrow-round-back" text="Back" color="primary"></ion-back-button>
+      <ion-back-button icon="arrow-round-back" text="Back" color="dark"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-right">
       <img class="logo3" src="/assets/img/logo3.png">
@@ -28,9 +28,11 @@
     </div>
     <br>
     <ion-button expand="block" (click)="login()">LOGIN</ion-button>
-    <p>Don't have an account ? <ion-label color="primary" routerLink="/register">sign up here</ion-label>
-    </p>
   </div>
+  
+  <p>
+    Don't have an account ? <ion-label color="primary" routerLink="/register">sign up here</ion-label>
+  </p>
 
 
 </ion-content>

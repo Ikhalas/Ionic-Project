@@ -1,13 +1,17 @@
 <br>
 <br>
 <br>
+<br>
 
 <ion-content>
   <ion-item>
-    <p>Profile</p>
+    <div class="title">
+      Profile
+    </div>
   </ion-item>
   <div *ngIf="userAvatar">
-      <ion-button [fill]="'clear'" class="button-go" (click)="goToUploadAvatar()"><img class="logo2" [src]="userAvatar"/></ion-button>
+    <ion-button [fill]="'clear'" class="button-go" (click)="goToUploadAvatar()"><img class="logo2" [src]="userAvatar" />
+    </ion-button>
   </div>
   <p>{{name}} {{surname}}</p>
 

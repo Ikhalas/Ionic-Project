@@ -1,5 +1,7 @@
-ion-back-button{
-    font-size: 20px;
+@import 'https://fonts.googleapis.com/css?family=Gelasio&display=swap';
+
+*{
+  font-family: 'Gelasio', serif;
 }
 
 ion-content{
@@ -8,13 +10,12 @@ ion-content{
 
 .login-logo{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .login-input{
     text-align: center;
-    width: 80%;
-    display: inline-block;
+    width: 100%;
 }
 
 .logo{
@@ -29,6 +30,7 @@ ion-content{
 
 p{
     margin-top: 20px;
+    font-size: 15px;
 }
 
 .msg-error{
