@@ -1,5 +1,7 @@
 {
   "name": "reviewer",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

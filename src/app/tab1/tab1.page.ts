@@ -1,6 +1,8 @@
 import { DatapassService } from '../datapass.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import { snapshotToArray } from '../config/firebaseconfig';
 
 
 @Component({
@@ -14,7 +16,15 @@ export class Tab1Page implements OnInit {
   loginstatus
   name
 
-  constructor(private datapass: DatapassService, private router: Router) { }
+  items = [];
+
+  constructor(private datapass: DatapassService, private router: Router) {
+    firebase.database().ref('posts/').on('value', res => {
+      this.items = snapshotToArray(res).map((item) => {
+        return item
+      })
+    })
+  }
 
   ngOnInit() {
     /*if(this.datapass.logincheck !== true) this.router.navigateByUrl('/login'); */
@@ -29,7 +39,7 @@ export class Tab1Page implements OnInit {
 
   }
 
-  
+
 
 
 }

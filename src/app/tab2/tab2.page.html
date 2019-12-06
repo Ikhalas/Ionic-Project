@@ -1,20 +1,67 @@
+<br>
+<br>
+<br>
+<br>
+
 <ion-content>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
-    <h1>This is Tab 2</h1>
+  <ion-item class="title">
+    <p>Write a review</p>
+  </ion-item>
+  <br>
+  <div *ngIf="!image_base64">
+    <ion-button [fill]="'clear'" (click)="openGallery()"><img src="/assets/img/upload-icon.png" /></ion-button>
+  </div>
+  <div *ngIf="image_base64">
+      <img [src]="preImage" />
+    </div>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="title" placeholder="Title"></ion-input>
+  </ion-item>
+  <div class="msg-error">
+    {{emptytitle === true ? " ! Title is required." : ""}}
+  </div>
+
+  <br>
+
+  <ion-item>
+    <ion-textarea rows="3" [(ngModel)]="review" placeholder="Review"></ion-textarea>
+  </ion-item>
+  <div class="msg-error">
+    {{emptyreview === true ? " ! Review is required." : ""}}
+  </div>
+
+  <br>
+
+  <div class="tag">
+    <ion-label position="floating">Tags</ion-label>
+  </div>
+
+  <ion-item>
+    <ion-label>Mac</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="Mac"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>iPhone</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="iPhone"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>iPad</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="iPad"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Watch</ion-label>
+    <ion-checkbox color="dark" [(ngModel)]="Watch"></ion-checkbox>
+  </ion-item>
+
+  <div class="msg-error">
+    {{emptytag === true ? " ! Tags is required." : ""}}
+  </div>
+
+  <br>
+  <ion-button expand="expand" color="success" (click)="validate()">Review</ion-button>
+
+
 </ion-content>
