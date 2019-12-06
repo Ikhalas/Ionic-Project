@@ -35,6 +35,7 @@ export class LoginPage {
         //console.log(data.username)
         found = true;
         this.datapass.name = data.fname
+        this.datapass.surname = data.lname
         this.datapass.userkey = data.key
         this.datapass.logincheck = found
 

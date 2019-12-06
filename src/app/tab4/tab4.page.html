@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Four
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<br>
+<br>
+<br>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-item>
+    <p>Profile</p>
+  </ion-item>
+  <div>
+    <img class="logo2" src="/assets/img/logo-user.png">
+  </div>
+  <p>{{name}} {{surname}}</p>
+
+  <ion-card>
+    <ion-button [fill]="'clear'" class="button-add" (click)="goToNewPost()">New Post<ion-icon name="add"></ion-icon>
+    </ion-button>
+  </ion-card>
+
+  <ion-item>
+    <p>Your post</p>
+  </ion-item>
+
+  <ion-list *ngIf="items && items.length > 0">
+    <ion-card *ngFor="let item of items">
+      <app-item [item]="item"></app-item>
+    </ion-card>
+  </ion-list>
+
+  <p *ngIf="items && items.length === 0">
+    No posts.
+  </p>
+  <p *ngIf="!items">
+    Loading...
+  </p>
+  <br>
+  <br>
+  <ion-button expand="full" color="danger" (click)="logout()">Log out</ion-button>
+
+</ion-content>
