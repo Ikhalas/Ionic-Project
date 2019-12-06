@@ -1,10 +1,34 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title class="ion-text-right">
-        <img class="logo3" src="/assets/img/logo3.png">
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-<ion-content>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <!--<img class="logo" src="/assets/img/logo3.png">-->
+      Review
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content lass="ion-padding">
+  <h1>{{post[0].title}}</h1>
+  <h2>Tag(s): {{this.posttag[0]}} {{this.posttag[1]}} {{this.posttag[2]}} {{this.posttag[4]}}</h2>
+  <div *ngFor="let user of poster">
+    <img class="avater" src="{{user.avatar}}" alt="avatar"> {{user.fname}} {{user.lname}} {{post[0].date}}
+    {{post[0].time}}
+  </div>
+  <br>
+  <div class="img_bg">
+    <img class="img_review" src="{{post[0].pathPicture}}" alt="review_img">
+  </div>
+
+  <div class="comment_bg">
+    <ion-list *ngIf="comm && comm.length > 0">
+      <ion-card *ngFor="let comment of comm">
+        <app-item [item]="comment"></app-item>
+      </ion-card>
+    </ion-list>
+  </div>
+
+
 
 </ion-content>

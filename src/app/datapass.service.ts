@@ -8,5 +8,6 @@ export class DatapassService {
   public logincheck
   public name
   public surname
+  public avatar
   constructor() { }
 }

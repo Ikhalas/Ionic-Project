@@ -38,6 +38,7 @@ export class LoginPage {
         this.datapass.surname = data.lname
         this.datapass.userkey = data.key
         this.datapass.logincheck = found
+        this.datapass.avatar = data.avatar
 
         console.log(this.datapass.userkey)
         console.log(this.datapass.name)

@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button icon="arrow-round-back" text="Back" color="primary"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-right">uploadAvatar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div *ngIf="!image_base64">
+      <ion-item>
+        <h1>Choose your avatar.</h1>
+      </ion-item>
+      <img class="logo2" src="/assets/img/avatar-upload.png">
+      <div>
+        <ion-button class="button-add" (click)="openCamera()">Open Camera</ion-button>
+      </div>
+      <div>
+        <ion-button class="button-add" (click)="openGallery()">Open Gallery</ion-button>
+      </div>
+    </div>
+    <div *ngIf="image_base64">
+      <ion-item>
+        <h1>This's right picture?</h1>
+      </ion-item>
+      <img class="logo2" [src]="image_base64" />
+      <ion-item>
+        <h4>preview your avatar</h4>
+      </ion-item>
+      <ion-avatar><img [src]="image_base64" /></ion-avatar>
+      <ion-button class="button-add" (click)="cancle()">cancle</ion-button>
+      <ion-button class="button-add" (click)="uploadAvatar()">Upload</ion-button>
+    </div>
+  </ion-content>

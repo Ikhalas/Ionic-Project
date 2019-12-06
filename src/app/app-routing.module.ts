@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'detail',
     loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
   },
+  {
+    path: 'upload-avatar',
+    loadChildren: () => import('./upload-avatar/upload-avatar.module').then( m => m.UploadAvatarPageModule)
+  },
   
   
 ];

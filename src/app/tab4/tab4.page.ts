@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import {snapshotToArray} from '../config/firebaseconfig';
+import { snapshotToArray } from '../config/firebaseconfig';
 import { DatapassService } from '../datapass.service';
 import { Router } from '@angular/router';
 
@@ -15,13 +15,14 @@ export class Tab4Page implements OnInit {
   surname
 
   items = [];
-  num:number = 0;
+  userAvatar: any;
+  num: number = 0;
   ref = firebase.database().ref('posts/')
 
-  constructor(private datapass: DatapassService, private router: Router) { 
-    this.ref.on('value', res =>{
-      this.items = snapshotToArray(res).filter((item)=>{
-        if(item.userId === this.datapass.userkey){
+  constructor(private datapass: DatapassService, private router: Router) {
+    this.ref.on('value', res => {
+      this.items = snapshotToArray(res).filter((item) => {
+        if (item.userId === this.datapass.userkey) {
           this.num = 1;
           return item;
         }
@@ -31,17 +32,21 @@ export class Tab4Page implements OnInit {
   }
 
   ngOnInit() {
-    if(this.datapass.logincheck !== true) this.router.navigateByUrl('/login');
-
+    if (this.datapass.logincheck !== true) this.router.navigateByUrl('/login');
+    this.userAvatar = this.datapass.avatar;
     this.name = this.datapass.name
     this.surname = this.datapass.surname
   }
 
-  goToNewPost(){
+  goToNewPost() {
     this.router.navigateByUrl('/maintabs/tab2');
   }
 
-  logout(){
+  goToUploadAvatar() {
+    this.router.navigate(['/upload-avatar']);
+  }
+
+  logout() {
     this.datapass.logincheck = false
     this.router.navigateByUrl('/home/nonlogintab')
   }

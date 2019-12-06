@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'Firebase';
@@ -18,6 +19,7 @@ export class RegisterPage {
   uname
   pass
   cpass
+
 
   repeatedUser
 
@@ -78,7 +80,8 @@ export class RegisterPage {
       username: this.username,
       password: this.password,
       fname: this.firstname,
-      lname: this.lastname
+      lname: this.lastname,
+      avatar: "assets/img/logo-user.png"
     })
     alert("Register Complete")
     this.router.navigate(['/login']);

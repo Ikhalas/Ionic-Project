@@ -1,3 +1,4 @@
+import { ItemComponent } from './../detail/item/item.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,6 @@ import { DetailPage } from './detail.page';
     IonicModule,
     DetailPageRoutingModule
   ],
-  declarations: [DetailPage]
+  declarations: [DetailPage, ItemComponent]
 })
 export class DetailPageModule {}

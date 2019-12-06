@@ -80,6 +80,7 @@ export class Tab2Page implements OnInit {
     console.log(this.nToday)
     console.log(this.title)
     console.log(this.review)
+    console.log(this.selectedTag);
     console.log(this.selectedTag.length);
 
     if (this.emptytitle === false || this.emptyreview === false || this.selectedTag.length > 0) {
@@ -96,7 +97,7 @@ export class Tab2Page implements OnInit {
     newInfo.set({
       title: this.title,
       detail: this.review,
-      like: [0],
+      like: 0,
       pathPicture: this.preImage,
       tag: this.selectedTag,
       date: this.nToday,
