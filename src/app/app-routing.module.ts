@@ -22,6 +22,15 @@ const routes: Routes = [
     path: 'maintabs',
     loadChildren: () => import('./maintabs/maintabs.module').then( m => m.MaintabsPageModule)
   },
+
+  /*{
+    path: '',
+    loadChildren: () => import('./maintabs/maintabs.module').then( m => m.MaintabsPageModule)
+  },*/
+  {
+    path: 'tags',
+    loadChildren: () => import('./tags/tags.module').then( m => m.TagsPageModule)
+  },
   
   
 ];

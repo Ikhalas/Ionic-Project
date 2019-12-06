@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-maintabs',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./maintabs.page.scss'],
 })
 export class MaintabsPage implements OnInit {
+  
 
-  constructor() { }
+  constructor(private nav: NavController) { }
 
   ngOnInit() {
+  }
+
+  goToTag(){
+    this.nav.navigateForward('/tags')
   }
 
 }

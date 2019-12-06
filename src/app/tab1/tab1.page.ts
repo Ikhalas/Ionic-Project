@@ -17,7 +17,7 @@ export class Tab1Page implements OnInit {
   constructor(private datapass: DatapassService, private router: Router) { }
 
   ngOnInit() {
-    if(this.datapass.logincheck !== true) this.router.navigateByUrl('/login'); 
+    /*if(this.datapass.logincheck !== true) this.router.navigateByUrl('/login'); */
 
     console.log(this.datapass.userkey)
     console.log(this.datapass.logincheck)

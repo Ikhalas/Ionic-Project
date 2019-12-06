@@ -1,0 +1,19 @@
+<div *ngIf="item">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p>{{item[0].title}}</p>
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <p *ngFor="let item of item[0].like">
+          <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+        </p>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <img class="pic-post" src="/assets/img/logo-user.png" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
