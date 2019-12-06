@@ -1,4 +1,4 @@
-<div *ngIf="item">
+<div *ngIf="item" (click) = "goToDetail(item[0].key)">
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -12,7 +12,7 @@
         </ion-row>
       </ion-col>
       <ion-col>
-        <img class="pic-post" src="/assets/img/logo-user.png" alt="">
+        <img class="pic-post" src="{{item[0].pathPicture}}" alt="">
       </ion-col>
     </ion-row>
   </ion-grid>

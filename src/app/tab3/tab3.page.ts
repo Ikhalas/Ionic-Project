@@ -60,7 +60,7 @@ export class Tab3Page implements OnInit {
             console.log(post);
             return post;
           }
-          //console.log(this.favs);
+          console.log(this.favs);
         });
       })
     })

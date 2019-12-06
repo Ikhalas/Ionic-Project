@@ -27,6 +27,7 @@ export class Tab4Page implements OnInit {
           return item;
         }
         this.num = 2;
+        console.log(this.items);
       });
     })
   }

@@ -8,10 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemComponent implements OnInit {
 
   @Input() item
+  comm
   constructor() { }
 
   ngOnInit() {
-    console.log(this.item)
+    console.log(this.comm)
   }
  
 }

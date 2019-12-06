@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,8 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ItemComponent implements OnInit {
 
   @Input() item
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+  goToDetail(key){
+    this.router.navigate(['/detail'],{
+      queryParams: {
+        postkey: JSON.stringify(key)
+      }
+      });
+  }
 
 }

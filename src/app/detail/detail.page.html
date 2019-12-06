@@ -21,13 +21,36 @@
     <img class="img_review" src="{{post[0].pathPicture}}" alt="review_img">
   </div>
 
+  <br>
+
+  <div *ngIf="!isComm">
+    <ion-button expand="full" color="warning" (click)="toggleText()">Comment</ion-button>
+  </div>
+
+  <div *ngIf="isComm">
+    <ion-item>
+      <ion-textarea rows="3" [(ngModel)]="commInput" placeholder="Comment"></ion-textarea>
+    </ion-item>
+    <div class="msg-error">
+    {{checkComm === false ? " ! Comment is required." : ""}}
+  </div>
+    <div class="btn_group">
+      <ion-button color="danger" (click)="ccComm()">Cancel</ion-button>
+      <ion-button color="success" (click)="validateComm()">Comfirm</ion-button>
+    </div>
+  </div>
+
+
+
+
   <div class="comment_bg">
     <ion-list *ngIf="comm && comm.length > 0">
-      <ion-card *ngFor="let comment of comm">
-        <app-item [item]="comment"></app-item>
+      <ion-card *ngFor="let com of user">
+        <app-item [item]="com"></app-item>
       </ion-card>
     </ion-list>
   </div>
+
 
 
 
