@@ -60,7 +60,7 @@ export class UploadAvatarPage implements OnInit {
       });
     })
   }
-  cancle() {
+  cancel() {
     this.image_base64 = "";
   }
 

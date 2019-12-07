@@ -25,7 +25,7 @@ export class Tab2Page implements OnInit {
   iPad
   Watch
 
-  image_base64:any;
+  image_base64: any;
 
   preImage = '/assets/img/no-image.png'
 
@@ -139,10 +139,14 @@ export class Tab2Page implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.image_base64 = base64Image;
-      this.preImage =  this.image_base64
+      this.preImage = this.image_base64
     }, (err) => {
       console.log(err);
     });
+  }
+
+  cancel() {
+    this.image_base64 = "";
   }
 
 

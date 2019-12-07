@@ -9,45 +9,48 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
-  <div class="title">
-    <h1>{{post[0].title}}</h1>
-  </div>
-
+  <ion-item>
+    <div class="title">
+      <h1>{{post[0].title}}</h1>
+    </div>
+  </ion-item>
   <div class="tag">
     <h2>Tag(s): {{this.posttag[0]}} {{this.posttag[1]}} {{this.posttag[2]}} {{this.posttag[4]}}</h2>
   </div>
-
   <div class="avartar_date">
     <div *ngFor="let user of poster">
       <img class="avater" src="{{user.avatar}}" alt="avatar"><span class="post_name">&nbsp;&nbsp; {{user.fname}}
         {{user.lname}} {{post[0].date}}</span>
       {{post[0].time}}
+
     </div>
   </div>
-
   <br>
   <div class="img_bg">
     <img class="img_review" src="{{post[0].pathPicture}}" alt="review_img">
   </div>
   <br>
-
+  <div>
+    &nbsp; Description: &nbsp;
+    {{post[0].detail}}
+  </div>
+  <br>
   <div *ngIf="showComm">
     <div *ngIf="likes && likes.length > 0">
-      <p *ngFor="let like of likes[0].like">
-        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
-      </p>
-      <ion-button (click)="resetLike()">Reset Like</ion-button>
+      <ion-row>
+          &nbsp;&nbsp;<p *ngFor="let like of likes[0].like">
+          <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+        </p>
+      </ion-row>
+      &nbsp;&nbsp;<ion-button (click)="resetLike()">Reset Like</ion-button>
+      <br>
     </div>
-
     <div *ngIf="likes && likes.length === 0">
       <ion-button (click)="showCheckbox()">ADD TO FAVORITE</ion-button>
     </div>
-
     <div *ngIf="!isComm">
       <ion-button expand="full" color="warning" (click)="toggleText()">Comment</ion-button>
     </div>
-
     <div *ngIf="isComm">
       <ion-item>
         <ion-textarea rows="2" [(ngModel)]="commInput" placeholder="Comment"></ion-textarea>
@@ -68,13 +71,10 @@
         </ion-list>
       </div>
     </div>
-
-
   </div>
   <div *ngIf="!showComm">
     <div></div>
   </div>
-
   <div class="comment_bg">
     <ion-list *ngIf="comment && comment.length > 0">
       <div *ngFor="let com of comment">
@@ -82,5 +82,4 @@
       </div>
     </ion-list>
   </div>
-
 </ion-content>
