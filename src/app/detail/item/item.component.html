@@ -1,6 +1,15 @@
 <ion-card *ngIf="com">
-    <img class="avatar" src="{{com[0].avatar}}" /> 
-    {{com[0].fname}} {{com[0].lname}}
-    {{com[0].password}}
-    {{com[0].username}}
+  <ion-grid>
+    <ion-row>
+      <img class="avatar" src="{{com[0].avatar}}" /><span class="comm_name">{{com[0].fname}} {{com[0].lname}}</span>
+      <br>
+      <span class="commm_date">{{com[0].password}}</span>
+    </ion-row>
+  </ion-grid>
+ 
+
+  <div class="comment">
+  {{com[0].username}}
+  </div>  
+
 </ion-card>
