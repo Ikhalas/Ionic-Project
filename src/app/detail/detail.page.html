@@ -4,54 +4,83 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      <!--<img class="logo" src="/assets/img/logo3.png">-->
       Review
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content lass="ion-padding">
-  <h1>{{post[0].title}}</h1>
-  <h2>Tag(s): {{this.posttag[0]}} {{this.posttag[1]}} {{this.posttag[2]}} {{this.posttag[4]}}</h2>
-  <div *ngFor="let user of poster">
-    <img class="avater" src="{{user.avatar}}" alt="avatar"> {{user.fname}} {{user.lname}} {{post[0].date}}
-    {{post[0].time}}
+<ion-content>
+
+  <div class="title">
+    <h1>{{post[0].title}}</h1>
   </div>
+
+  <div class="tag">
+    <h2>Tag(s): {{this.posttag[0]}} {{this.posttag[1]}} {{this.posttag[2]}} {{this.posttag[4]}}</h2>
+  </div>
+
+  <div class="avartar_date">
+    <div *ngFor="let user of poster">
+      <img class="avater" src="{{user.avatar}}" alt="avatar"><span class="post_name">&nbsp;&nbsp; {{user.fname}}
+        {{user.lname}} {{post[0].date}}</span>
+      {{post[0].time}}
+    </div>
+  </div>
+
   <br>
   <div class="img_bg">
     <img class="img_review" src="{{post[0].pathPicture}}" alt="review_img">
   </div>
-
   <br>
 
-  <div *ngIf="!isComm">
-    <ion-button expand="full" color="warning" (click)="toggleText()">Comment</ion-button>
-  </div>
-
-  <div *ngIf="isComm">
-    <ion-item>
-      <ion-textarea rows="3" [(ngModel)]="commInput" placeholder="Comment"></ion-textarea>
-    </ion-item>
-    <div class="msg-error">
-    {{checkComm === false ? " ! Comment is required." : ""}}
-  </div>
-    <div class="btn_group">
-      <ion-button color="danger" (click)="ccComm()">Cancel</ion-button>
-      <ion-button color="success" (click)="validateComm()">Comfirm</ion-button>
+  <div *ngIf="showComm">
+    <div *ngIf="likes && likes.length > 0">
+      <p *ngFor="let like of likes[0].like">
+        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+      </p>
+      <ion-button (click)="resetLike()">Reset Like</ion-button>
     </div>
+
+    <div *ngIf="likes && likes.length === 0">
+      <ion-button (click)="showCheckbox()">ADD TO FAVORITE</ion-button>
+    </div>
+
+    <div *ngIf="!isComm">
+      <ion-button expand="full" color="warning" (click)="toggleText()">Comment</ion-button>
+    </div>
+
+    <div *ngIf="isComm">
+      <ion-item>
+        <ion-textarea rows="2" [(ngModel)]="commInput" placeholder="Comment"></ion-textarea>
+      </ion-item>
+      <div class="msg-error">
+        {{checkComm === false ? " ! Comment is required." : ""}}
+      </div>
+      <div class="btn_group">
+        <ion-button color="danger" (click)="ccComm()">Cancel</ion-button>
+        <ion-button color="success" (click)="validateComm()">Comfirm</ion-button>
+      </div>
+      <br>
+      <div class="comment_bg">
+        <ion-list *ngIf="comment && comment.length > 0">
+          <ion-card *ngFor="let com of comment">
+            <app-item [com]="com"></app-item>
+          </ion-card>
+        </ion-list>
+      </div>
+    </div>
+
+
   </div>
-
-
-
+  <div *ngIf="!showComm">
+    <div></div>
+  </div>
 
   <div class="comment_bg">
-    <ion-list *ngIf="comm && comm.length > 0">
-      <ion-card *ngFor="let com of user">
-        <app-item [item]="com"></app-item>
-      </ion-card>
+    <ion-list *ngIf="comment && comment.length > 0">
+      <div *ngFor="let com of comment">
+        <app-item [com]="com"></app-item>
+      </div>
     </ion-list>
   </div>
-
-
-
 
 </ion-content>

@@ -15,11 +15,8 @@
       <app-item [item]="item"></app-item>
     </ion-card>
   </ion-list>
-  <p *ngIf="items && items.length === 0">
-    You don't like any posts.
+  <p *ngIf="items && items.length === 0" class="wait">
+    please wait...
   </p>
-  <p *ngIf !="items">
-    Loading...
-  </p>
-
+ 
 </ion-content>

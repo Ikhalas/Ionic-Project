@@ -1,6 +1,9 @@
-ion-back-button{
-    font-size: 20px;
+@import 'https://fonts.googleapis.com/css?family=Gelasio&display=swap';
+
+*{
+  font-family: 'Gelasio', serif;
 }
+
 
 .logo3{
     margin-top: 20px;
@@ -10,15 +13,18 @@ ion-back-button{
 
 .signup-input{
     text-align: center;
-    width: 85%;
-    display: inline-block;
-    
+    width: 100%;
+    display: inline-block; 
+}
+
+ion-input {
+    font-size: 20px;
 }
 
 .signup-header{
     width: 80%;
     display: inline-block; 
-    color: #f84c61; 
+    color: #f84c61;
 }
 
 .msg-error{

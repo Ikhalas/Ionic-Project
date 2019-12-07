@@ -7,15 +7,11 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./maintabs.page.scss'],
 })
 export class MaintabsPage implements OnInit {
-  
+
 
   constructor(private nav: NavController) { }
 
   ngOnInit() {
-  }
-
-  goToTag(){
-    this.nav.navigateForward('/tags')
   }
 
 }

@@ -1,3 +1,10 @@
+@import 'https://fonts.googleapis.com/css?family=Gelasio&display=swap';
+
+*{
+  font-family: 'Gelasio', serif;
+}
+
+
 ion-title{
     text-align: center;
 }
@@ -8,6 +15,34 @@ h1{
 
 h2{
     font-size: 15px;
+}
+
+
+
+
+.title{
+    margin-left: 10px; 
+    font-size: 30px;
+}
+
+.tag{
+    margin-left: 10px; 
+    font-size: 15px; 
+}
+
+.avartar_date{
+    margin-left: 10px; 
+    font-size: 10px;
+}
+
+.avater{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.post_name{
+    margin-bottom: 90px;
 }
 
 .img_bg{
@@ -22,9 +57,7 @@ h2{
     width: 70%;
 }
 
-.avater{
-    width: 10%;
-}
+
 
 .btn_group{
     text-align: right;

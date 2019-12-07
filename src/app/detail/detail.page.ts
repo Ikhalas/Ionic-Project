@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { snapshotToArray } from '../config/firebaseconfig';
 import { DatapassService } from '../datapass.service';
 import * as firebase from 'firebase';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,8 @@ export class DetailPage implements OnInit {
   comm = []
   comment = []
   user = []
+  likes = []
+  com = []
 
   today = new Date();
   dd: number = this.today.getDate();
@@ -26,11 +29,16 @@ export class DetailPage implements OnInit {
   isComm = false
   checkComm
 
+  showComm = false
+
   ref = firebase.database().ref('comments/');
 
-  constructor(public activatedRoute: ActivatedRoute, private datapass: DatapassService) { }
+  constructor(public activatedRoute: ActivatedRoute, private datapass: DatapassService, private alertCtrl: AlertController) { }
 
   ngOnInit() {
+    if (this.datapass.logincheck === true) {
+      this.showComm = true
+    }
     //get postId
     this.activatedRoute.queryParams.subscribe((res) => {
       this.userkey = JSON.parse(res.postkey);
@@ -77,9 +85,20 @@ export class DetailPage implements OnInit {
       this.findcomment();
       //console.log(this.comm)
     })
+    firebase.database().ref('favorite/').on('value', res => {
+      this.likes = snapshotToArray(res).filter((item) => {
+        if (item.postId === this.post[0].key && item.userId === this.datapass.userkey) {
+
+          return item;
+        }
+      })
+      console.log(this.likes[0])
+    })
   }
 
-  findcomment(){
+
+
+  findcomment() {
     firebase.database().ref('user/').on('value', res => {
       this.comment = this.comm.map((item) => {
         return this.user = snapshotToArray(res).filter((user) => {
@@ -107,7 +126,7 @@ export class DetailPage implements OnInit {
     this.commInput == undefined || this.commInput == " " || this.commInput == null ? this.checkComm = false : this.checkComm = true
     if (this.checkComm == true) {
       let newComment = this.ref.push();
-      
+
 
       newComment.set({
         comment: this.commInput,
@@ -137,6 +156,87 @@ export class DetailPage implements OnInit {
     var d = new Date().toString()
     var res = d.substring(16, 21);
     return res
+  }
+  async showCheckbox() {
+    let alert = await this.alertCtrl.create({
+      subHeader: 'How many do you like?',
+      inputs: [
+        {
+          name: 'like1',
+          type: 'checkbox',
+          label: 'Like1',
+          value: 'like',
+          checked: false
+        },
+        {
+          name: 'like2',
+          type: 'checkbox',
+          label: 'Like2',
+          value: 'like',
+          checked: false
+        },
+        {
+          name: 'like3',
+          type: 'checkbox',
+          label: 'Like3',
+          value: 'like',
+          checked: false
+        },
+        {
+          name: 'like4',
+          type: 'checkbox',
+          label: 'Like4',
+          value: 'like',
+          checked: false
+        },
+        {
+          name: 'like5',
+          type: 'checkbox',
+          label: 'Like5',
+          value: 'like',
+          checked: false
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: data => {
+            console.log(data);
+            let newInfo = firebase.database().ref('favorite/').push();
+            console.log(data);
+            console.log(this.userkey);
+            console.log(this.datapass.userkey);
+            newInfo.set({
+              like: data,
+              postId: this.userkey,
+              userId: this.datapass.userkey,
+            })
+
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  resetLike() {
+    firebase.database().ref('favorite/').on('value', res => {
+      snapshotToArray(res).filter((item) => {
+        if (item.postId === this.post[0].key && item.userId === this.datapass.userkey) {
+          firebase.database().ref('favorite/' + item.key).remove();
+
+        }
+      })
+      //console.log(this.comm)
+    })
   }
 
 

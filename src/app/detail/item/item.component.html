@@ -1,4 +1,6 @@
-<div *ngIf="item">
-  {{item.userId}}
-
-</div>
+<ion-card *ngIf="com">
+    <img class="avatar" src="{{com[0].avatar}}" /> 
+    {{com[0].fname}} {{com[0].lname}}
+    {{com[0].password}}
+    {{com[0].username}}
+</ion-card>
